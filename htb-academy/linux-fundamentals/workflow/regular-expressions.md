@@ -59,8 +59,8 @@ $ grep -E "(my.*false)" /etc/passwd
 5 	Search for all lines beginning with Password and containing yes.
 6 	Search for all lines that end with yes.
 ```
-
-1. 
+  
+1. Show all lines that do not contain the # character. 
 ``` sh
 $ grep -v -E "(^$|^#)" /etc/ssh/sshd_config
 > Include /etc/ssh/sshd_config.d/*.conf
@@ -76,5 +76,78 @@ $ grep -v -E "(^$|^#)" /etc/ssh/sshd_config
 > `()` group regex  
 > `^$` lines with no characters  
 > `^#` lines beginning with `#`
+  
+2. Search for all lines that contain a word that starts with Permit.
+``` sh
+$ grep -E "Permit.*" /etc/ssh/sshd_config
+> #PermitRootLogin prohibit-password
+> #PermitEmptyPasswords no
+> # the setting of "PermitRootLogin prohibit-password".
+> #PermitTTY yes
+> #PermitUserEnvironment no
+> #PermitTunnel no
+> #	PermitTTY no
+```
+> `.*` in this case is used to match "Permit" AND all other variations of words beginning with "Permit"
+  
+3. Search for all lines that contain a word ending with Authentication.
+``` sh
+$ grep -E ".*Authentication" /etc/ssh/sshd_config 
+> # Authentication:
+> #PubkeyAuthentication yes
+> #HostbasedAuthentication no
+> # HostbasedAuthentication
+> #PasswordAuthentication yes
+> KbdInteractiveAuthentication no
+> #KerberosAuthentication no
+> #GSSAPIAuthentication no
+> # be allowed through the KbdInteractiveAuthentication and
+> # PasswordAuthentication.  Depending on your PAM configuration,
+> # PAM authentication via KbdInteractiveAuthentication may bypass
+> # PAM authentication, then enable this but set PasswordAuthentication
+> # and KbdInteractiveAuthentication to 'no'.
+```
+  
+4. Search for all lines containing the word Key.
+``` sh
+$ grep "Key" /etc/ssh/sshd_config 
+> #HostKey /etc/ssh/ssh_host_rsa_key
+> #HostKey /etc/ssh/ssh_host_ecdsa_key
+> #HostKey /etc/ssh/ssh_host_ed25519_key
+> #AuthorizedKeysFile	.ssh/authorized_keys .ssh/authorized_keys2
+> #AuthorizedKeysCommand none
+> #AuthorizedKeysCommandUser nobody
+> #GSSAPIKeyExchange no
+```
+  
+5. Search for all lines beginning with Password and containing yes.
+``` sh
+$ grep -E "(^#Password.*yes)" /etc/ssh/sshd_config 
+> #PasswordAuthentication yes
+```
+  
+6. Search for all lines that end with yes.
+``` sh
+$ grep -E ".*yes" /etc/ssh/sshd_config 
+> #StrictModes yes
+> #PubkeyAuthentication yes
+> # Change to yes if you don't trust ~/.ssh/known_hosts for
+> #IgnoreRhosts yes
+> #PasswordAuthentication yes
+> # Change to yes to enable challenge-response passwords (beware issues with
+> #KerberosOrLocalPasswd yes
+> #KerberosTicketCleanup yes
+> #GSSAPICleanupCredentials yes
+> #GSSAPIStrictAcceptorCheck yes
+> # Set this to 'yes' to enable PAM authentication, account processing,
+> UsePAM yes
+> #AllowAgentForwarding yes
+> #AllowTcpForwarding yes
+> X11Forwarding yes
+> #X11UseLocalhost yes
+> #PermitTTY yes
+> #PrintLastLog yes
+> #TCPKeepAlive yes
+```
 
-2. asd
+---
