@@ -91,7 +91,7 @@ $ grep -E "Permit.*" /etc/ssh/sshd_config
 > `.*` in this case is used to match "Permit" AND all other variations of words beginning with "Permit"
   
 3. Search for all lines that contain a word ending with Authentication.
-``` sh
+``` py
 $ grep -E ".*Authentication" /etc/ssh/sshd_config 
 > # Authentication:
 > #PubkeyAuthentication yes
@@ -109,7 +109,7 @@ $ grep -E ".*Authentication" /etc/ssh/sshd_config
 ```
   
 4. Search for all lines containing the word Key.
-``` sh
+``` zsh
 $ grep "Key" /etc/ssh/sshd_config 
 > #HostKey /etc/ssh/ssh_host_rsa_key
 > #HostKey /etc/ssh/ssh_host_ecdsa_key
@@ -121,13 +121,13 @@ $ grep "Key" /etc/ssh/sshd_config
 ```
   
 5. Search for all lines beginning with Password and containing yes.
-``` sh
+``` bash
 $ grep -E "(^#Password.*yes)" /etc/ssh/sshd_config 
 > #PasswordAuthentication yes
 ```
   
 6. Search for all lines that end with yes.
-``` sh
+``` shell
 $ grep -E ".*yes" /etc/ssh/sshd_config 
 > #StrictModes yes
 > #PubkeyAuthentication yes
