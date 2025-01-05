@@ -71,37 +71,10 @@ $ grep -v -E "(^$|^#)" /etc/ssh/sshd_config
 > AcceptEnv LANG LC_*
 > Subsystem	sftp	/usr/lib/openssh/sftp-server
 ```
-> `-v` exclude matching
-> `-E` extended regex
-> `()` group regex
-> `^$` lines with no characters
+> `-v` exclude matching  
+> `-E` extended regex  
+> `()` group regex  
+> `^$` lines with no characters  
 > `^#` lines beginning with `#`
 
 2. asd
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
