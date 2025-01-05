@@ -30,7 +30,7 @@ These are often found in tools like `grep` or `sed`
 
 Suppose we're looking for lines containing the word `my` or `false`. To use these operators (with `grep`), we much use the `extended regex` flag, `-E`.
 
-``` sh
+``` bash
 $ grep -E "(my|false)" /etc/passwd
 > lxd:x:105:65534::/var/lib/lxd/:/bin/false
 > pollinate:x:109:1::/var/cache/pollinate:/bin/false
@@ -39,7 +39,7 @@ $ grep -E "(my|false)" /etc/passwd
 
 #### AND operator
 
-``` sh
+``` bash
 $ grep -E "(my.*false)" /etc/passwd
 > mysql:x:116:120:MySQL Server,,:/nonexistent:/bin/false
 ```
@@ -61,7 +61,7 @@ $ grep -E "(my.*false)" /etc/passwd
 ```
   
 1. Show all lines that do not contain the # character. 
-``` sh
+``` bash
 $ grep -v -E "(^$|^#)" /etc/ssh/sshd_config
 > Include /etc/ssh/sshd_config.d/*.conf
 > KbdInteractiveAuthentication no
@@ -78,7 +78,7 @@ $ grep -v -E "(^$|^#)" /etc/ssh/sshd_config
 > `^#` lines beginning with `#`
   
 2. Search for all lines that contain a word that starts with Permit.
-``` sh
+``` bash
 $ grep -E "Permit.*" /etc/ssh/sshd_config
 > #PermitRootLogin prohibit-password
 > #PermitEmptyPasswords no
@@ -91,7 +91,7 @@ $ grep -E "Permit.*" /etc/ssh/sshd_config
 > `.*` in this case is used to match "Permit" AND all other variations of words beginning with "Permit"
   
 3. Search for all lines that contain a word ending with Authentication.
-``` py
+``` bash
 $ grep -E ".*Authentication" /etc/ssh/sshd_config 
 > # Authentication:
 > #PubkeyAuthentication yes
@@ -109,7 +109,7 @@ $ grep -E ".*Authentication" /etc/ssh/sshd_config
 ```
   
 4. Search for all lines containing the word Key.
-``` zsh
+``` bash
 $ grep "Key" /etc/ssh/sshd_config 
 > #HostKey /etc/ssh/ssh_host_rsa_key
 > #HostKey /etc/ssh/ssh_host_ecdsa_key
@@ -127,7 +127,7 @@ $ grep -E "(^#Password.*yes)" /etc/ssh/sshd_config
 ```
   
 6. Search for all lines that end with yes.
-``` shell
+``` bash
 $ grep -E ".*yes" /etc/ssh/sshd_config 
 > #StrictModes yes
 > #PubkeyAuthentication yes
